@@ -1,3 +1,4 @@
+// Version 2.0
 export type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'stormy' | 'snowy' | 'windy';
 
 export interface HourlyForecastData {
