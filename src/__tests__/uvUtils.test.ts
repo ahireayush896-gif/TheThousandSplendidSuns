@@ -16,7 +16,19 @@ describe('getUvAdvice', () => {
     expect(advice.spfRecommendation).toBe(30);
   });
 
-  it('should return SPF 50 and very_high risk for very high UV index (6-10)', () => {
+  it('should return SPF 40 and high risk for high UV index (6-7)', () => {
+    const advice = getUvAdvice(6);
+    expect(advice.uvIndex).toBe(6);
+    expect(advice.riskLevel).toBe('high');
+    expect(advice.spfRecommendation).toBe(40);
+
+    const advice7 = getUvAdvice(7);
+    expect(advice7.uvIndex).toBe(7);
+    expect(advice7.riskLevel).toBe('high');
+    expect(advice7.spfRecommendation).toBe(40);
+  });
+
+  it('should return SPF 50 and very_high risk for very high UV index (8-10)', () => {
     const advice = getUvAdvice(8);
     expect(advice.uvIndex).toBe(8);
     expect(advice.riskLevel).toBe('very_high');
@@ -37,6 +49,6 @@ describe('getUvAdvice', () => {
     expect(advice).toHaveProperty('spfRecommendation');
     expect(typeof advice.uvIndex).toBe('number');
     expect(typeof advice.spfRecommendation).toBe('number');
-    expect(['low', 'moderate', 'very_high', 'extreme']).toContain(advice.riskLevel);
+    expect(['low', 'moderate', 'high', 'very_high', 'extreme']).toContain(advice.riskLevel);
   });
 });
