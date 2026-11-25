@@ -1,4 +1,17 @@
 // Version 3.0 on main
+export enum WeatherAlertLevel {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH',
+  CRITICAL = 'CRITICAL'
+}
+
+export interface WeatherAlert {
+  id: string;
+  level: WeatherAlertLevel;
+  message: string;
+}
+
 export type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'stormy' | 'snowy' | 'windy';
 
 export interface HourlyForecastData {
