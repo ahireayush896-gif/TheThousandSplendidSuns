@@ -24,9 +24,11 @@ describe('calculateWindChill', () => {
     expect(result).toBe(9.8);
   });
 
-  it('should return a number rounded to 1 decimal place', () => {
-    const result = calculateWindChill(-5, 25);
-    const decimalPlaces = (result.toString().split('.')[1] || '').length;
-    expect(decimalPlaces).toBeLessThanOrEqual(1);
+  it('should clamp negative wind speeds to 0', () => {
+    // With windSpeedKmh = -5, clamped to 0:
+    // windPower = 0^0.16 = 0
+    // windChill = 13.12 + 0.6215 * (-5) - 0 + 0 = 13.12 - 3.1075 = 10.0125 -> 10.0
+    const result = calculateWindChill(-5, -5);
+    expect(result).toBe(10.0);
   });
 });
