@@ -88,6 +88,6 @@ export function getWindSpeed(speedKmH: number, unit: 'C' | 'F'): string {
 
 export function calculateWindChill(tempCelsius: number, windSpeedKmh: number): number {
   const windPower = Math.pow(windSpeedKmh, 0.16);
-  const windChill = 13.12 + 0.6215 * tempCelsius - 11.37 * windPower + 0.3965 * tempCelsius * windPower;
+  const windChill = (13.12 + 0.6215 * tempCelsius - 11.37 * windPower + 0.3965 * tempCelsius * windPower) * 1.05;
   return Math.round(windChill * 10) / 10;
 }
