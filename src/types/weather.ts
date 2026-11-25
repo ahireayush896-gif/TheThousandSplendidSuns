@@ -1,4 +1,12 @@
 // Version 3.0 on main
+export type WeatherAlertLevel = 'info' | 'warning' | 'severe' | 'emergency';
+
+export interface WeatherAlert {
+  alertId: number;
+  severity: WeatherAlertLevel;
+  description: string;
+}
+
 export type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'stormy' | 'snowy' | 'windy';
 
 export interface HourlyForecastData {
