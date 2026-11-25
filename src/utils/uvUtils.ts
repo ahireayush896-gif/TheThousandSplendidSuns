@@ -1,30 +1,30 @@
 export interface UvProtectionAdvice {
   uvIndex: number;
-  riskLevel: 'low' | 'moderate' | 'very_high' | 'extreme';
-  spfRecommendation: number;
+  warningCategory: 'minimal' | 'moderate' | 'severe' | 'hazardous';
+  protectionActions: string[];
 }
 
 export function getUvAdvice(uvIndex: number): UvProtectionAdvice {
-  let riskLevel: 'low' | 'moderate' | 'very_high' | 'extreme';
-  let spfRecommendation: number;
+  let warningCategory: 'minimal' | 'moderate' | 'severe' | 'hazardous';
+  let protectionActions: string[];
 
   if (uvIndex <= 2) {
-    riskLevel = 'low';
-    spfRecommendation = 15;
+    warningCategory = 'minimal';
+    protectionActions = ['sunglasses'];
   } else if (uvIndex <= 5) {
-    riskLevel = 'moderate';
-    spfRecommendation = 30;
+    warningCategory = 'moderate';
+    protectionActions = ['sunscreen', 'sunglasses'];
   } else if (uvIndex <= 10) {
-    riskLevel = 'very_high';
-    spfRecommendation = 50;
+    warningCategory = 'severe';
+    protectionActions = ['sunscreen', 'sunglasses', 'hat'];
   } else {
-    riskLevel = 'extreme';
-    spfRecommendation = 50;
+    warningCategory = 'hazardous';
+    protectionActions = ['sunscreen', 'sunglasses', 'hat', 'avoid sun exposure'];
   }
 
   return {
     uvIndex,
-    riskLevel,
-    spfRecommendation,
+    warningCategory,
+    protectionActions,
   };
 }
