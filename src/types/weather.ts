@@ -1,3 +1,4 @@
+// Version 4
 // Version 3.0 on main
 export type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'stormy' | 'snowy' | 'windy';
 
